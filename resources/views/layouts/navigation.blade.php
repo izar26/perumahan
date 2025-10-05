@@ -10,35 +10,32 @@
                     </a>
                 </div>
 
-                <!-- Navigation Links -->
+                <!-- Navigation Links (Desktop) -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    {{-- LINK MANAJEMEN TIPE UNIT --}}
-    <x-nav-link :href="route('admin.tipe-unit.index')" :active="request()->routeIs('admin.tipe-unit.*')">
-        {{ __('Tipe Unit') }}
-    </x-nav-link>
-
-    {{-- TAMBAHKAN LINK BARU INI --}}
-    <x-nav-link :href="route('admin.fasilitas.index')" :active="request()->routeIs('admin.fasilitas.*')">
-        {{ __('Fasilitas') }}
-    </x-nav-link>
-    <x-nav-link :href="route('admin.agen.index')" :active="request()->routeIs('admin.agen.*')">
-    {{ __('Agen Marketing') }}
-</x-nav-link>
-<x-nav-link :href="route('admin.pesan.index')" :active="request()->routeIs('admin.pesan.*')">
-    {{ __('Pesan Masuk') }}
-    @php
-        $unreadCount = \App\Models\Pesan::where('sudah_dibaca', false)->count();
-    @endphp
-    @if($unreadCount > 0)
-        <span class="ml-2 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">{{ $unreadCount }}</span>
-    @endif
-</x-nav-link>
-<x-nav-link :href="route('admin.settings.index')" :active="request()->routeIs('admin.settings.index')">
-    {{ __('Pengaturan Website') }}
-</x-nav-link>
+                    <x-nav-link :href="route('admin.tipe-unit.index')" :active="request()->routeIs('admin.tipe-unit.*')">
+                        {{ __('Tipe Unit') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.fasilitas.index')" :active="request()->routeIs('admin.fasilitas.*')">
+                        {{ __('Fasilitas') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.agen.index')" :active="request()->routeIs('admin.agen.*')">
+                        {{ __('Agen Marketing') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.pesan.index')" :active="request()->routeIs('admin.pesan.*')">
+                        {{ __('Pesan Masuk') }}
+                        @php
+                            $unreadCount = \App\Models\Pesan::where('sudah_dibaca', false)->count();
+                        @endphp
+                        @if($unreadCount > 0)
+                            <span class="ml-2 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">{{ $unreadCount }}</span>
+                        @endif
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.settings.index')" :active="request()->routeIs('admin.settings.index')">
+                        {{ __('Pengaturan Website') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -65,7 +62,6 @@
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
@@ -88,14 +84,34 @@
         </div>
     </div>
 
-    <!-- Responsive Navigation Menu -->
+    <!-- Responsive Navigation Menu (Mobile) -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.tipe-unit.index')" :active="request()->routeIs('admin.tipe-unit.*')">
+                {{ __('Tipe Unit') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.fasilitas.index')" :active="request()->routeIs('admin.fasilitas.*')">
+                {{ __('Fasilitas') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.agen.index')" :active="request()->routeIs('admin.agen.*')">
+                {{ __('Agen Marketing') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.pesan.index')" :active="request()->routeIs('admin.pesan.*')">
+                {{ __('Pesan Masuk') }}
+                @php
+                    $unreadCount = \App\Models\Pesan::where('sudah_dibaca', false)->count();
+                @endphp
+                @if($unreadCount > 0)
+                    <span class="ml-2 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">{{ $unreadCount }}</span>
+                @endif
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.settings.index')" :active="request()->routeIs('admin.settings.index')">
+                {{ __('Pengaturan Website') }}
+            </x-responsive-nav-link>
         </div>
-        
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
@@ -112,7 +128,6 @@
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
